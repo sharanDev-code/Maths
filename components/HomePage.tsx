@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import heroImg from "@/public/hero.png";
 import zoomImg from "@/public/zoomImg.avif";
+import homeHeroImg from "@/public/HomeHero.jpg";
 import { SectionHeading } from "@/components/site/SectionHeading";
 
 // Utilizing high-quality Unsplash fallbacks for images to keep things operational
@@ -30,7 +31,25 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } },
+};
+
+const fadeInLeft = {
+    hidden: { opacity: 0, x: -30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" as const } },
+};
+
+const fadeInRight = {
+    hidden: { opacity: 0, x: 30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" as const } },
+};
+
+const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.2 },
+    },
 };
 
 const fadeUp = {
@@ -70,62 +89,80 @@ function Hero() {
             </div>
 
             <div className="container-page relative w-full">
-                <motion.div
-                    initial={{ opacity: 1, y: 0 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="max-w-2xl"
-                >
-                    <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-gold backdrop-blur">
-                        <Sparkles className="h-3.5 w-3.5" />
-                        Trusted since 2004
-                    </div>
-                    <h1 className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] text-white">
-                        Raj{" "}
-                        <span className="italic text-gold">Mathematics</span>{" "}
-                        Institute
-                    </h1>
-                    <p className="mt-6 max-w-xl text-base md:text-lg text-white/75 leading-relaxed">
-                        Master mathematics with experienced educators. We help students achieve
-                        outstanding examination results through structured classroom programs
-                        and live Zoom online classes.
-                    </p>
-                    {/* <div className="mt-9 flex flex-wrap gap-3">
-                        <Link
-                            href="/contact"
-                            className="group inline-flex items-center gap-2 rounded-md bg-gold px-6 py-3.5 text-sm font-semibold text-gold-foreground shadow-lg transition-all hover:shadow-xl hover:-translate-y-0.5"
-                        >
-                            Enroll Now
-                            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </Link>
-                        <Link
-                            href="/services"
-                            className="inline-flex items-center gap-2 rounded-md border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
-                        >
-                            <Video className="h-4 w-4" />
-                            Join Online Classes
-                        </Link>
-                        <Link
-                            href="/contact"
-                            className="inline-flex items-center gap-2 rounded-md px-6 py-3.5 text-sm font-semibold text-white/85 hover:text-gold"
-                        >
-                            Contact Us
-                        </Link>
-                    </div> */}
+                <div className="grid lg:grid-cols-2 gap-10 items-center">
+                    <motion.div
+                        variants={staggerContainer}
+                        initial="hidden"
+                        animate="visible"
+                        className="max-w-2xl"
+                    >
+                        <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-gold backdrop-blur">
+                            <Sparkles className="h-3.5 w-3.5" />
+                            Trusted since 2004
+                        </motion.div>
+                        <motion.h1 variants={fadeInUp} className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] text-white">
+                            Raj{" "}
+                            <span className="italic text-gold">Mathematics</span>{" "}
+                            Institute
+                        </motion.h1>
+                        <motion.p variants={fadeInUp} className="mt-6 max-w-xl text-base md:text-lg text-white/75 leading-relaxed">
+                            Master mathematics with experienced educators. We help students achieve
+                            outstanding examination results through structured classroom programs
+                            and live Zoom online classes.
+                        </motion.p>
+                        {/* <div className="mt-9 flex flex-wrap gap-3">
+                            <Link
+                                href="/contact"
+                                className="group inline-flex items-center gap-2 rounded-md bg-gold px-6 py-3.5 text-sm font-semibold text-gold-foreground shadow-lg transition-all hover:shadow-xl hover:-translate-y-0.5"
+                            >
+                                Enroll Now
+                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            </Link>
+                            <Link
+                                href="/services"
+                                className="inline-flex items-center gap-2 rounded-md border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
+                            >
+                                <Video className="h-4 w-4" />
+                                Join Online Classes
+                            </Link>
+                            <Link
+                                href="/contact"
+                                className="inline-flex items-center gap-2 rounded-md px-6 py-3.5 text-sm font-semibold text-white/85 hover:text-gold"
+                            >
+                                Contact Us
+                            </Link>
+                        </div> */}
 
-                    <div className="mt-12 grid grid-cols-3 gap-6 max-w-lg">
-                        {[
-                            ["15+", "Years"],
-                            ["2,500+", "Students"],
-                            ["96%", "Pass Rate"],
-                        ].map(([n, l]) => (
-                            <div key={l}>
-                                <div className="font-display text-3xl md:text-4xl text-gold">{n}</div>
-                                <div className="mt-1 text-xs uppercase tracking-widest text-white/55">{l}</div>
-                            </div>
-                        ))}
-                    </div>
-                </motion.div>
+                        <motion.div variants={fadeInUp} className="mt-12 grid grid-cols-3 gap-6 max-w-lg">
+                            {[
+                                ["15+", "Years"],
+                                ["2,500+", "Students"],
+                                ["96%", "Pass Rate"],
+                            ].map(([n, l]) => (
+                                <div key={l}>
+                                    <div className="font-display text-3xl md:text-4xl text-gold">{n}</div>
+                                    <div className="mt-1 text-xs uppercase tracking-widest text-white/55">{l}</div>
+                                </div>
+                            ))}
+                        </motion.div>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="hidden lg:block relative w-full aspect-[4/3] max-w-md mx-auto xl:max-w-xl rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+                    >
+                        <Image
+                            src={homeHeroImg}
+                            alt="Raj Mathematics Institute Class"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                        <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl pointer-events-none" />
+                    </motion.div>
+                </div>
             </div>
         </section>
     );
@@ -143,11 +180,13 @@ function WhyChoose() {
     return (
         <section className="py-24 lg:py-32">
             <div className="container-page">
-                <SectionHeading
-                    eyebrow="Why Raj"
-                    title="Built around how students actually learn mathematics."
-                    subtitle="We combine rigorous teaching with attentive mentoring — so every student grows in confidence as well as competence."
-                />
+                <motion.div {...fadeUp}>
+                    <SectionHeading
+                        eyebrow="Why Raj"
+                        title="Built around how students actually learn mathematics."
+                        subtitle="We combine rigorous teaching with attentive mentoring — so every student grows in confidence as well as competence."
+                    />
+                </motion.div>
                 <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {items.map(({ Icon, title, desc }, i) => (
                         <motion.div
@@ -211,7 +250,7 @@ function Programs() {
     return (
         <section className="py-24 lg:py-32 bg-primary-soft/60">
             <div className="container-page">
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                <motion.div {...fadeUp} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
                     <SectionHeading
                         eyebrow="Programs"
                         title="Mathematics programs for every stage."
@@ -223,7 +262,7 @@ function Programs() {
                     >
                         View all services <ArrowRight className="h-4 w-4" />
                     </Link>
-                </div>
+                </motion.div>
 
                 <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                     {programs.map(({ Icon, title, desc }, i) => (
@@ -245,7 +284,7 @@ function Programs() {
                     ))}
                 </div>
             </div>
-        </section>
+        </section >
     );
 }
 
@@ -287,10 +326,10 @@ function ZoomSection() {
                 </motion.div>
 
                 <motion.div
-                    initial={{ opacity: 1, scale: 1 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    variants={fadeInRight}
+                    initial="hidden"
+                    whileInView="visible"
                     viewport={{ once: true, margin: "-80px" }}
-                    transition={{ duration: 0.7 }}
                     className="relative"
                 >
                     <div className="absolute -inset-6 bg-gradient-to-tr from-primary/10 via-gold/10 to-transparent rounded-3xl blur-2xl" />
@@ -329,11 +368,13 @@ function TestimonialsPreview() {
     return (
         <section className="py-24 lg:py-32 bg-primary-soft/40 border-y border-border">
             <div className="container-page">
-                <SectionHeading
-                    eyebrow="Success Stories"
-                    title="Students, parents, and results we're proud of."
-                    align="center"
-                />
+                <motion.div {...fadeUp}>
+                    <SectionHeading
+                        eyebrow="Success Stories"
+                        title="Students, parents, and results we're proud of."
+                        align="center"
+                    />
+                </motion.div>
                 <div className="mt-14 grid gap-6 md:grid-cols-3">
                     {items.map((t, i) => (
                         <motion.figure
@@ -367,7 +408,7 @@ function FinalCTA() {
     return (
         <section className="py-24 lg:py-32">
             <div className="container-page">
-                <div className="relative overflow-hidden rounded-3xl bg-primary-deep text-white p-10 md:p-16 lg:p-20">
+                <motion.div {...fadeUp} className="relative overflow-hidden rounded-3xl bg-primary-deep text-white p-10 md:p-16 lg:p-20">
                     <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_80%_20%,_var(--color-gold)_0,_transparent_50%)]" />
                     <div className="relative grid lg:grid-cols-[1.4fr_1fr] gap-10 items-center">
                         <div>
@@ -392,7 +433,7 @@ function FinalCTA() {
                             </Link>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );
