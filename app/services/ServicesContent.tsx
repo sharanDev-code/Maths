@@ -5,6 +5,7 @@ import Image, { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
 import classroomImg from "@/public/Physical.jpg";
 import zoomImg from "@/public/ZoomClass.jpg";
+import servicesHeroImg from "@/public/servicesHero.png";
 import {
     Users,
     Video,
@@ -45,12 +46,21 @@ export default function ServicesContent() {
 
 function ServicesHero() {
     return (
-        <section className="relative bg-primary-deep text-white overflow-hidden">
+        <section className="relative flex h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)] items-center bg-primary-deep text-white overflow-hidden">
+            <div className="absolute inset-0">
+                <Image
+                    src={servicesHeroImg}
+                    alt="Mathematics Services Hero"
+                    fill
+                    className="object-cover opacity-50 mix-blend-luminosity"
+                    priority
+                />
+            </div>
             {/* Grid Pattern Overlay */}
             <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(255,255,255,0.4)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.4)_1px,transparent_1px)] [background-size:48px_48px]" />
             <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-gold/10 blur-[100px]" />
 
-            <div className="container-page relative py-24 md:py-32 lg:py-40">
+            <div className="container-page relative z-10 w-full">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}

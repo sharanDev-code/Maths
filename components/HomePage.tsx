@@ -21,7 +21,7 @@ import {
     PlayCircle,
 } from "lucide-react";
 import heroImg from "@/public/hero.png";
-import zoomImg from "@/public/zoomImg.avif";
+import zoomImg from "@/public/zoomImg.jpg";
 import homeHeroImg from "@/public/HomeHero.jpg";
 import { SectionHeading } from "@/components/site/SectionHeading";
 
@@ -337,9 +337,9 @@ function ZoomSection() {
                         <Image src={zoomImg} alt="Live online mathematics class" width={1400} height={1000} className="w-full h-auto aspect-video object-cover" />
                     </div>
                     <div className="absolute -bottom-6 -left-6 rounded-xl bg-card border border-border shadow-xl p-4 max-w-[220px]">
-                        <div className="text-xs uppercase tracking-widest text-muted-foreground">Live now</div>
-                        <div className="mt-1 font-display text-lg font-semibold text-foreground">O/L Revision</div>
-                        <div className="text-xs text-muted-foreground">42 students online</div>
+                        <div className="text-xs uppercase tracking-widest text-muted-foreground">Interactive Learning</div>
+                        <div className="mt-1 font-display text-lg font-semibold text-foreground">Global Access</div>
+                        <div className="text-xs text-muted-foreground">Learn from anywhere</div>
                     </div>
                 </motion.div>
             </div>

@@ -224,7 +224,7 @@ export default function ContactPage() {
                                                 <button
                                                     type="button"
                                                     onClick={handleSendOTP}
-                                                    className="bg-primary/10 text-primary px-4 py-2 rounded-xl text-xs font-bold hover:bg-primary/20 transition-all"
+                                                    className="bg-primary text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-primary-deep transition-all"
                                                 >
                                                     Verify Email
                                                 </button>
@@ -323,7 +323,7 @@ export default function ContactPage() {
                                     <button
                                         type="submit"
                                         disabled={status !== "verified" && status !== "sending_message"}
-                                        className={`bg-primary text-white font-bold w-full py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-primary-deep transition-all ${status !== "verified" && status !== "sending_message" ? "opacity-50 cursor-not-allowed grayscale" : ""}`}
+                                        className={`bg-primary text-white font-bold w-full py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-primary-deep transition-all ${status !== "verified" && status !== "sending_message" ? "opacity-50 cursor-not-allowed" : ""}`}
                                     >
                                         {status === "sending_message" ? (
                                             <>
@@ -404,7 +404,7 @@ export default function ContactPage() {
                                                     WhatsApp
                                                 </h4>
                                                 <a
-                                                    href="https://wa.me/94772995460?text=Hi,%20I%20found%20your%20website%20and%20would%20like%20to%20discuss%20a%20project."
+                                                    href="https://wa.me/94772455450?text=Hi,%20I%20found%20your%20website%20and%20would%20like%20to%20discuss%20a%20project."
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="mt-2 bg-[#25D366] text-white py-2 px-6 rounded-lg font-bold text-sm flex items-center justify-center gap-2 hover:bg-[#20ba59] transition-all inline-flex"
