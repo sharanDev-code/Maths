@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import HomePage from "@/components/HomePage";
 
 export const metadata: Metadata = {
-  title: "Raj Mathematics Institute — Excellence in Mathematics Education",
+  title: "Raj Mathematics Institute",
   description: "Premier mathematics institution. Grade 6 to O/L Mathematics with experienced teachers, classroom and live Zoom programs.",
   alternates: {
     canonical: "/",

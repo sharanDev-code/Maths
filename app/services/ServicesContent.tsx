@@ -19,6 +19,8 @@ import {
     LineChart,
     Target,
     Sparkles,
+    PlayCircle,
+    ClipboardCheck,
 } from "lucide-react";
 
 //const classroomImg = "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=80";
@@ -159,12 +161,12 @@ function ModeCard({
 
 function ProgramsGrid() {
     const subjects = [
-        { Icon: Calculator, title: "O/L Mathematics", desc: "Complete syllabus coverage with weekly tutorials and model papers." },
-        { Icon: LineChart, title: "Grade 9 Mathematics", desc: "Comprehensive syllabus coverage and advanced concept building." },
-        { Icon: Target, title: "Grade 8 Mathematics", desc: "Deep mastery of algebra, geometry, and arithmetic foundations." },
-        { Icon: Sparkles, title: "Grade 7 Mathematics", desc: "Analytical thinking and problem-solving skills development." },
-        { Icon: BookOpen, title: "Grade 6 Mathematics", desc: "Build a fluent base before stepping up to higher grades." },
-        { Icon: Award, title: "Revision Programs", desc: "Targeted topic revision and past-paper workshops." },
+        { Icon: Calculator, title: "O/L Mathematics", desc: "Strategic preparation and advanced techniques for top O/L results." },
+        { Icon: BookOpen, title: "Grades 6–9 Mathematics", desc: "Building strong foundations through a structured and simplified approach." },
+        { Icon: PlayCircle, title: "YouTube Educational Videos", desc: "Access our channel for simple, short videos that make complex topics easy." },
+        { Icon: Users, title: "Personal Classes", desc: "One-on-one sessions tailored to your individual learning speed and style." },
+        { Icon: Video, title: "Live Zoom Classes", desc: "Interactive online classrooms with real-time teacher engagement." },
+        { Icon: ClipboardCheck, title: "Question Clarification", desc: "Dedicated support sessions to clarify doubts and master difficult questions." },
     ];
 
     return (

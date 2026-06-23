@@ -57,7 +57,7 @@ export default function HomePage() {
 
 function Hero() {
     return (
-        <section className="relative overflow-hidden text-white">
+        <section className="relative flex h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)] items-center overflow-hidden text-white">
             <div className="absolute inset-0">
                 <Image
                     src={heroImg}
@@ -69,29 +69,28 @@ function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-deep via-primary-deep/85 to-primary/70" />
             </div>
 
-            <div className="container-page relative pt-20 pb-24 md:pt-32 md:pb-36 lg:pt-40 lg:pb-44">
+            <div className="container-page relative w-full">
                 <motion.div
                     initial={{ opacity: 1, y: 0 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="max-w-3xl"
+                    className="max-w-2xl"
                 >
                     <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-gold backdrop-blur">
                         <Sparkles className="h-3.5 w-3.5" />
-                        Trusted since 2008
+                        Trusted since 2004
                     </div>
                     <h1 className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] text-white">
-                        Excellence in{" "}
+                        Raj{" "}
                         <span className="italic text-gold">Mathematics</span>{" "}
-                        Education
+                        Institute
                     </h1>
                     <p className="mt-6 max-w-xl text-base md:text-lg text-white/75 leading-relaxed">
                         Master mathematics with experienced educators. We help students achieve
                         outstanding examination results through structured classroom programs
                         and live Zoom online classes.
                     </p>
-
-                    <div className="mt-9 flex flex-wrap gap-3">
+                    {/* <div className="mt-9 flex flex-wrap gap-3">
                         <Link
                             href="/contact"
                             className="group inline-flex items-center gap-2 rounded-md bg-gold px-6 py-3.5 text-sm font-semibold text-gold-foreground shadow-lg transition-all hover:shadow-xl hover:-translate-y-0.5"
@@ -112,7 +111,7 @@ function Hero() {
                         >
                             Contact Us
                         </Link>
-                    </div>
+                    </div> */}
 
                     <div className="mt-12 grid grid-cols-3 gap-6 max-w-lg">
                         {[
@@ -202,12 +201,12 @@ function Stats() {
 
 function Programs() {
     const programs = [
-        { Icon: Calculator, title: "O/L Mathematics", desc: "Strong fundamentals for confident exam performance." },
-        { Icon: LineChart, title: "Grade 9 Mathematics", desc: "Deepening mathematical concepts and preparing for O/L." },
-        { Icon: Target, title: "Grade 8 Mathematics", desc: "Building core skills in algebra, geometry and arithmetic." },
-        { Icon: Sparkles, title: "Grade 7 Mathematics", desc: "Developing analytical thinking and problem-solving skills." },
-        { Icon: BookOpen, title: "Grade 6 Mathematics", desc: "A strong foundation in basic mathematical principles." },
-        { Icon: Award, title: "Revision & Exam Prep", desc: "Intensive paper-class series ahead of national exams." },
+        { Icon: Calculator, title: "O/L Mathematics", desc: "Strategic preparation and advanced techniques for top O/L results." },
+        { Icon: BookOpen, title: "Grades 6–9 Mathematics", desc: "Building strong foundations through a structured and simplified approach." },
+        { Icon: PlayCircle, title: "YouTube Educational Videos", desc: "Access our channel for simple, short videos that make complex topics easy." },
+        { Icon: Users, title: "Personal Classes", desc: "One-on-one sessions tailored to your individual learning speed and style." },
+        { Icon: Video, title: "Live Zoom Classes", desc: "Interactive online classrooms with real-time teacher engagement." },
+        { Icon: ClipboardCheck, title: "Question Clarification", desc: "Dedicated support sessions to clarify doubts and master difficult questions." },
     ];
     return (
         <section className="py-24 lg:py-32 bg-primary-soft/60">

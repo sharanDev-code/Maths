@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { Quote } from "lucide-react";
+import { ResultsGraph } from "@/components/ResultsGraph";
+import Image from "next/image";
+import successImg from "@/public/success stories.png";
 
 export const metadata: Metadata = {
     title: "Success Stories | Raj Mathematics Institute",
@@ -41,14 +44,36 @@ export default function SuccessStoriesPage() {
     ];
 
     return (
-        <main className="py-20 lg:py-32 bg-primary-soft/30 min-h-screen">
-            <div className="container-page">
-                <SectionHeading
-                    eyebrow="Testimonials"
-                    title="Journeys of Academic Triumph"
-                    subtitle="Read the transformation stories of our students who redefined their mathematical boundaries."
-                    align="center"
-                />
+        <main className="bg-background min-h-screen ">
+            {/* Hero Section */}
+            <section className="relative flex h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)] items-center overflow-hidden text-white">
+                <div className="absolute inset-0">
+                    <Image
+                        src={successImg}
+                        alt="Success Stories"
+                        fill
+                        className="object-cover"
+                        priority
+                    />
+                    <div className="absolute inset-0 " />
+                </div>
+
+                <div className="container-page relative">
+                    <div className="mx-auto max-w-4xl bg-black/40 backdrop-blur-md p-10 md:p-16 lg:p-20 rounded-3xl border border-white/10 shadow-2xl">
+                        <SectionHeading
+                            eyebrow="Testimonials"
+                            title="Journeys of Academic Triumph"
+                            subtitle="Read the transformation stories of our students who redefined their mathematical boundaries."
+                            align="center"
+                            className="max-w-3xl [&_h2]:text-white [&_p]:text-white/90 [&_span]:text-gold"
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <div className="container-page py-20 lg:py-24">
+
+                <ResultsGraph />
 
                 <div className="mt-20 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {items.map((t, i) => (
