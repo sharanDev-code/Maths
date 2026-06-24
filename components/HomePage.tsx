@@ -76,7 +76,7 @@ export default function HomePage() {
 
 function Hero() {
     return (
-        <section className="relative flex h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)] items-center overflow-hidden text-white">
+        <section className="relative flex min-h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)] items-center overflow-hidden text-white py-12 md:py-0">
             <div className="absolute inset-0">
                 <Image
                     src={heroImg}
@@ -89,14 +89,13 @@ function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-deep via-primary-deep/85 to-primary/70" />
             </div>
 
-            <div className="container-page relative w-full">
+            <div className="container-page relative w-full max-w-full">
                 <div className="grid lg:grid-cols-2 gap-10 items-center">
                     <motion.div
                         variants={staggerContainer}
                         initial="hidden"
                         animate="visible"
-                        className="max-w-2xl text-center md:text-left flex flex-col items-center md:items-start w-full"
-                    >
+                        className="w-full min-w-0 text-center md:text-left flex flex-col items-center md:items-start">
                         <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 sm:px-4 sm:py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.18em] text-gold backdrop-blur">
                             <Sparkles className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
                             Trusted since 2004
