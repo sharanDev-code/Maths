@@ -18,9 +18,11 @@ export function ResultsGraph() {
     const padding = 60;
 
     // Calculate coordinates
+    const minPercent = 50;
+    const maxPercent = 100;
     const points = data.map((d, i) => {
         const x = padding + (i * (width - 2 * padding)) / (data.length - 1);
-        const y = height - padding - (d.percentage / 100) * (height - 2 * padding);
+        const y = height - padding - ((d.percentage - minPercent) / (maxPercent - minPercent)) * (height - 2 * padding);
         return { x, y, ...d };
     });
 
@@ -33,7 +35,7 @@ export function ResultsGraph() {
     const areaPath = `${linePath} L ${points[points.length - 1].x} ${height - padding} L ${points[0].x} ${height - padding} Z`;
 
     return (
-        <div className="w-full max-w-5xl mx-auto mt-16 mb-12 p-8 sm:p-12 bg-card border border-border shadow-2xl rounded-[2.5rem] overflow-hidden relative group">
+        <div className="w-full max-w-5xl mx-auto mt-16 mb-12 p-3 sm:p-12 bg-card border border-border shadow-2xl rounded-[2.5rem] overflow-hidden relative group">
             {/* Decorative Background Elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl -mr-32 -mt-32 transition-colors group-hover:bg-gold/10" />
 
@@ -46,15 +48,22 @@ export function ResultsGraph() {
                 </p>
             </div>
 
-            <div className="relative w-full aspect-[2.5/1] min-h-[300px]">
+            <div className="relative w-full aspect-[2/1] min-h-[220px] sm:aspect-[2.5/1] sm:min-h-[300px]">
                 {/* Y-axis Labels & Grid Lines */}
-                <div className="absolute inset-0 flex flex-col justify-between pointer-events-none text-xs font-semibold text-muted-foreground/60">
-                    {[100, 75, 50, 25, 0].map((val) => (
-                        <div key={val} className="w-full flex items-center gap-4 h-0">
-                            <span className="w-10 text-right">{val}%</span>
-                            <div className="flex-1 border-t border-dashed border-border/50" />
-                        </div>
-                    ))}
+                <div className="absolute inset-0 pointer-events-none">
+                    {[100, 90, 80, 70, 60, 50].map((val) => {
+                        const yPos = height - padding - ((val - minPercent) / (maxPercent - minPercent)) * (height - 2 * padding);
+                        return (
+                            <div
+                                key={val}
+                                className="absolute w-full flex items-center gap-2 sm:gap-4 -translate-y-1/2 text-[10px] sm:text-xs font-semibold text-muted-foreground/60"
+                                style={{ top: `${(yPos / height) * 100}%` }}
+                            >
+                                <span className="w-8 sm:w-10 text-right">{val}%</span>
+                                <div className="flex-1 border-t border-dashed border-border/50" />
+                            </div>
+                        );
+                    })}
                 </div>
 
                 {/* SVG Graph Drawing */}
@@ -123,26 +132,30 @@ export function ResultsGraph() {
                 </svg>
 
                 {/* X-axis Years */}
-                <div className="absolute inset-x-0 bottom-0 flex justify-between px-[60px] translate-y-8">
-                    {data.map((d) => (
-                        <span key={d.year} className="text-sm font-bold text-muted-foreground tracking-tighter">
-                            {d.year}
+                <div className="absolute inset-0 pointer-events-none">
+                    {points.map((point) => (
+                        <span
+                            key={point.year}
+                            className="absolute bottom-0 text-[10px] sm:text-sm font-bold text-muted-foreground tracking-tighter translate-y-6 sm:translate-y-8 -translate-x-1/2"
+                            style={{ left: `${(point.x / width) * 100}%` }}
+                        >
+                            {point.year}
                         </span>
                     ))}
                 </div>
             </div>
 
             {/* Legend / Metrics */}
-            <div className="mt-20 flex flex-wrap justify-center gap-12 border-t border-border pt-10">
-                <div className="text-center">
+            <div className="mt-16 sm:mt-20 flex flex-wrap justify-center gap-8 sm:gap-12 border-t border-border pt-10">
+                <div className="text-center w-full sm:w-auto">
                     <div className="text-3xl font-black text-foreground">100%</div>
                     <div className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mt-1">Consistency</div>
                 </div>
-                <div className="text-center border-x border-border px-12">
+                <div className="text-center sm:border-x border-border sm:px-12 w-full sm:w-auto">
                     <div className="text-3xl font-black text-gold">95%+</div>
                     <div className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mt-1">Average Pass</div>
                 </div>
-                <div className="text-center">
+                <div className="text-center w-full sm:w-auto">
                     <div className="text-3xl font-black text-foreground">A Grade</div>
                     <div className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mt-1">Standard</div>
                 </div>

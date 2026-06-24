@@ -95,18 +95,35 @@ function Hero() {
                         variants={staggerContainer}
                         initial="hidden"
                         animate="visible"
-                        className="max-w-2xl"
+                        className="max-w-2xl text-center md:text-left flex flex-col items-center md:items-start w-full"
                     >
-                        <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-gold backdrop-blur">
-                            <Sparkles className="h-3.5 w-3.5" />
+                        <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 sm:px-4 sm:py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.18em] text-gold backdrop-blur">
+                            <Sparkles className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
                             Trusted since 2004
                         </motion.div>
-                        <motion.h1 variants={fadeInUp} className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] text-white">
+                        <motion.h1 variants={fadeInUp} className="mt-4 sm:mt-6 font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] text-white">
                             Raj{" "}
                             <span className="italic text-gold">Mathematics</span>{" "}
                             Institute
                         </motion.h1>
-                        <motion.p variants={fadeInUp} className="mt-6 max-w-xl text-base md:text-lg text-white/75 leading-relaxed">
+
+                        {/* Mobile Image */}
+                        <motion.div
+                            variants={fadeInUp}
+                            className="block md:hidden relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 mt-6 sm:mt-8"
+                        >
+                            <Image
+                                src={homeHeroImg}
+                                alt="Raj Mathematics Institute Class"
+                                fill
+                                className="object-cover"
+                                priority
+                                sizes="100vw"
+                            />
+                            <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl pointer-events-none" />
+                        </motion.div>
+
+                        <motion.p variants={fadeInUp} className="mt-6 font-medium sm:font-normal max-w-xl text-sm sm:text-base md:text-lg text-white/75 leading-relaxed">
                             Master mathematics with experienced educators. We help students achieve
                             outstanding examination results through structured classroom programs
                             and live Zoom online classes.
@@ -134,25 +151,26 @@ function Hero() {
                             </Link>
                         </div> */}
 
-                        <motion.div variants={fadeInUp} className="mt-12 grid grid-cols-3 gap-6 max-w-lg">
+                        <motion.div variants={fadeInUp} className="mt-8 sm:mt-12 flex flex-wrap justify-center md:justify-start gap-6 sm:gap-10 md:gap-16">
                             {[
                                 ["15+", "Years"],
                                 ["2,500+", "Students"],
                                 ["96%", "Pass Rate"],
                             ].map(([n, l]) => (
                                 <div key={l}>
-                                    <div className="font-display text-3xl md:text-4xl text-gold">{n}</div>
-                                    <div className="mt-1 text-xs uppercase tracking-widest text-white/55">{l}</div>
+                                    <div className="font-display text-2xl sm:text-3xl md:text-4xl text-gold">{n}</div>
+                                    <div className="mt-1 text-[10px] sm:text-xs uppercase tracking-widest text-white/55">{l}</div>
                                 </div>
                             ))}
                         </motion.div>
                     </motion.div>
 
+                    {/* Desktop & Tablet Image */}
                     <motion.div
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="hidden lg:block relative w-full aspect-[4/3] max-w-md mx-auto xl:max-w-xl rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+                        className="hidden md:block relative w-full aspect-[4/3] max-w-md mx-auto xl:max-w-xl rounded-2xl overflow-hidden shadow-2xl border border-white/10"
                     >
                         <Image
                             src={homeHeroImg}

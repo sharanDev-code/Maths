@@ -49,7 +49,7 @@ const facultyDetails = [
 
 export function AboutClient() {
     return (
-        <main className="py-20 lg:py-32">
+        <main className="py-20 lg:py-20">
             <div className="container-page">
                 {/* Our Story Section */}
                 <motion.div {...fadeUp}>
@@ -61,7 +61,7 @@ export function AboutClient() {
                     />
                 </motion.div>
 
-                <div className="mt-20 grid md:grid-cols-3 gap-8">
+                <div className="mt-10 grid md:grid-cols-3 gap-8">
                     {[
                         { icon: GraduationCap, title: "Expert Faculty", desc: "Led by visionary mathematics educators with decades of combined pedagogical experience.", bg: "bg-primary-soft text-primary", iconBg: "bg-primary-soft text-primary" },
                         { icon: Clock, title: "15+ Years Legacy", desc: "A proud track record of producing top-island ranks and remarkable academic transformations.", bg: "bg-gold/20 text-gold", iconBg: "bg-gold/20 text-gold" },

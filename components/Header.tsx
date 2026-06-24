@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -86,35 +87,43 @@ export function Header() {
                 </button>
             </div>
 
-            {open && (
-                <div className="lg:hidden border-t border-border bg-background animate-fade-in">
-                    <div className="container-page py-4 flex flex-col gap-1">
-                        {NAV.map((item) => {
-                            const isActive = item.to === "/" ? pathname === "/" : pathname.startsWith(item.to);
-                            return (
-                                <Link
-                                    key={item.to}
-                                    href={item.to}
-                                    onClick={() => setOpen(false)}
-                                    className={cn(
-                                        "px-3 py-3 text-base font-medium rounded-md hover:bg-primary-soft",
-                                        isActive ? "text-primary bg-primary-soft" : "text-foreground"
-                                    )}
-                                >
-                                    {item.label}
-                                </Link>
-                            )
-                        })}
-                        <Link
-                            href="/contact"
-                            onClick={() => setOpen(false)}
-                            className="mt-2 inline-flex items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground"
-                        >
-                            Enroll Now
-                        </Link>
-                    </div>
-                </div>
-            )}
+            <AnimatePresence>
+                {open && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="lg:hidden border-t border-border bg-background overflow-hidden"
+                    >
+                        <div className="container-page py-4 flex flex-col gap-1">
+                            {NAV.map((item) => {
+                                const isActive = item.to === "/" ? pathname === "/" : pathname.startsWith(item.to);
+                                return (
+                                    <Link
+                                        key={item.to}
+                                        href={item.to}
+                                        onClick={() => setOpen(false)}
+                                        className={cn(
+                                            "px-3 py-3 text-base font-medium rounded-md hover:bg-primary-soft",
+                                            isActive ? "text-primary bg-primary-soft" : "text-foreground"
+                                        )}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                )
+                            })}
+                            <Link
+                                href="/contact"
+                                onClick={() => setOpen(false)}
+                                className="mt-2 inline-flex items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground"
+                            >
+                                Enroll Now
+                            </Link>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </header>
     );
 }
